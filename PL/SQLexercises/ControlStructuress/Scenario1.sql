@@ -2,7 +2,7 @@ DECLARE
 BEGIN
     FOR Customer IN (
         SELECT CustomerID, Age
-        FROM Customerss
+        FROM Customers
     )
     LOOP
         IF Customer.Age > 60 THEN
