@@ -1,0 +1,123 @@
+<form #enrollForm="ngForm" (ngSubmit)="onSubmit(enrollForm)">
+
+  <h2>Student Enrollment</h2>
+
+  <label>Student Name</label><br>
+
+  <input
+    type="text"
+    name="studentName"
+    [(ngModel)]="studentName"
+    #nameCtrl="ngModel"
+    required
+    minlength="3">
+
+  <br><br>
+  @if (nameCtrl.touched && nameCtrl.errors?.['required']) {
+  <span style="color:red;">
+    Name is required
+  </span><br>
+}
+
+
+@if (nameCtrl.touched && nameCtrl.errors?.['minlength']) {
+  <span style="color:red;">
+    Name must be at least 3 characters
+  </span><br>
+}
+
+  <label>Email</label><br>
+
+  <input
+    type="email"
+    name="studentEmail"
+    [(ngModel)]="studentEmail"
+    #emailCtrl="ngModel"
+    required
+    email>
+
+  <br><br>
+  @if (emailCtrl.touched && emailCtrl.errors?.['required']) {
+  <span style="color:red;">
+    Email is required
+  </span>
+}
+
+@if (emailCtrl.touched && emailCtrl.errors?.['email']) {
+  <span style="color:red;">
+    Enter a valid email
+  </span>
+}
+
+  <label>Course</label><br>
+
+  <select
+    name="courseId"
+    [(ngModel)]="courseId"
+    #courseCtrl="ngModel"
+    required>
+
+    <option value="">Select Course</option>
+    <option value="Angular">Angular</option>
+    <option value="Java">Java</option>
+    <option value="Spring Boot">Spring Boot</option>
+  </select>
+
+  <br><br>
+  @if (courseCtrl.touched && courseCtrl.errors?.['required']) {
+  <span style="color:red;">
+    Please select a course
+  </span>
+}
+
+  <label>Preferred Semester</label><br>
+
+  <select
+    name="preferredSemester"
+    [(ngModel)]="preferredSemester">
+
+    <option value="">Select Semester</option>
+    <option value="Odd">Odd</option>
+    <option value="Even">Even</option>
+
+  </select>
+
+  <br><br>
+
+  <label>
+
+    <input
+      type="checkbox"
+      name="agreeToTerms"
+      [(ngModel)]="agreeToTerms"
+      #termsCtrl="ngModel"
+      required>
+
+    I accept the Terms and Conditions
+
+  </label>
+
+  <br><br>
+  @if (termsCtrl.touched && termsCtrl.errors?.['required']) {
+  <span style="color:red;">
+    You must accept the Terms & Conditions
+  </span>
+}
+
+  <button
+  type="submit"
+  [disabled]="enrollForm.invalid">
+  Submit
+</button>
+
+<button
+  type="button"
+  (click)="enrollForm.resetForm()">
+  Reset
+</button>
+
+@if (submitted) {
+  <div style="color:green; margin-top:15px;">
+    Enrollment request submitted successfully!
+  </div>
+}
