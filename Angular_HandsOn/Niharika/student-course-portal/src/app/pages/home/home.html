@@ -1,4 +1,15 @@
-<h1>Welcome to the Student Course Portal</h1>
+<h1>{{ portalName }}</h1>
+
+<button [disabled]="!isPortalActive">Enroll Now</button>
+<button (click)="onEnrollClick()">Trigger Message</button>
+<p>{{ message }}</p>
+
+<input [(ngModel)]="searchTerm">
+<p>Searching for: {{ searchTerm }}</p>
+
+<!-- [property] = one-way binding, component -> DOM (e.g. [disabled]) -->
+<!-- [(ngModel)] = two-way binding, DOM <-> component, keeps input and searchTerm in sync -->
+
 <p>Manage your courses, track grades, and stay updated with your enrollment status.</p>
 <div class="stats">
   <span>Courses Available: 12</span> |
