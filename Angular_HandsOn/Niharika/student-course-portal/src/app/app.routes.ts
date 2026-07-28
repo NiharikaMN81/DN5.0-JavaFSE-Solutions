@@ -1,3 +1,4 @@
+import { ReactiveEnrollmentForm } from './pages/reactive-enrollment-form/reactive-enrollment-form';
 import { StudentProfile } from './pages/student-profile/student-profile';
 import { EnrollmentForm } from './pages/enrollment-form/enrollment-form';
 import { Routes } from '@angular/router';
@@ -7,6 +8,7 @@ import { CourseList } from './pages/course-list/course-list';
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'courses', component: CourseList },
-  {path: 'student-profile', component: StudentProfile},
-  {path: 'enrollment', component: EnrollmentForm}
+  { path: 'student-profile', component: StudentProfile },
+  { path: 'enrollment', component: EnrollmentForm },
+  { path: 'enroll-reactive', component: ReactiveEnrollmentForm }
 ];
